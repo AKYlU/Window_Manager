@@ -186,7 +186,7 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-    #barra automaticamente
+    #barra automatica
     mode hide
     #barra no topo
     position top
@@ -196,25 +196,29 @@ bar {
     font pango:DejaVu Sans Mono 9
 }
 
-
 # Desativa bordas na janelas
 for_window [class=".*"] border none
 
 # Programas para iniciar no boot
 exec vivaldi
-exec ksnip
-# Atraso de 6 segundos antes de iniciar o Steam
-exec --no-startup-id sleep 6 && steam -silent
+# Atraso de segundos antes de iniciar os programa
+# exec --no-startup-id steam -silent
+# exec --no-startup-id heroic -silent
+# exec --no-startup-id export QT_QPA_PLATFORMTHEME=qt5ct
 exec /home/akil/Downloads/set_volume.sh
-exec --no-startup-id lxpolkit
+exec sleep 2 && ksnip 
+exec --no-startup-id sleep 2 && lxpolkit
+exec --no-startup-id lutris -silent
+exec --no-startup-id code -silent
+exec --no-startup-id xclicker -silent
 
 # atalhos para executar aplicativos
+# bindsym $mod+m exec prismlauncher
 bindsym $mod+s exec steam
-bindsym $mod+m exec prismlauncher
 bindsym $mod+l exec lutris
 bindsym $mod+h exec heroic
 bindsym $mod+c exec code
-bindsym Mod4+k exec ksnip
+bindsym $Mod+k exec ksnip
 bindsym $mod+b exec /home/akil/Downloads/upbge-0.36.1-linux-x86_64/blender
 
 # teclas para desligar ou reiniciar
@@ -229,6 +233,5 @@ bindsym $mod+F3 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -3% &&
 # bindsym $mod+F2 exec --no-startup-id pactl set-source-volume @DEFAULT_SOURCE@ +100% && notify-send "Microfone" "$(pactl list sources | grep 'Volume:' | head -n 1 | awk '{print $5}')"
 # bindsym $mod+F4 exec --no-startup-id pactl set-source-volume @DEFAULT_SOURCE@ -20% && notify-send "Microfone" "$(pactl list sources | grep 'Volume:' | head -n 1 | awk '{print $5}')"
 
-
-
-
+# para botar em 17% o volume
+exec --no-startup-id pactl set-sink-volume 0 17%
