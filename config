@@ -194,23 +194,19 @@ bar {
     status_command i3status 
     #fonte
     font pango:DejaVu Sans Mono 9
+    
 }
 
 # Desativa bordas na janelas
 for_window [class=".*"] border none
 
 # Programas para iniciar no boot
-exec vivaldi
-# Atraso de segundos antes de iniciar os programa
-# exec --no-startup-id steam -silent
-# exec --no-startup-id heroic -silent
 # exec --no-startup-id export QT_QPA_PLATFORMTHEME=qt5ct
-exec /home/akil/Downloads/set_volume.sh
+exec vivaldi
+exec /home/akil/Downloads/Akil.sh
+# Atraso de segundos antes de iniciar os programa
 exec sleep 2 && ksnip 
-exec --no-startup-id sleep 2 && lxpolkit
-exec --no-startup-id lutris -silent
-exec --no-startup-id code -silent
-exec --no-startup-id xclicker -silent
+exec sleep 2 && lxpolkit
 
 # atalhos para executar aplicativos
 # bindsym $mod+m exec prismlauncher
@@ -235,3 +231,8 @@ bindsym $mod+F3 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -3% &&
 
 # para botar em 17% o volume
 exec --no-startup-id pactl set-sink-volume 0 17%
+
+# atualização assim que o i3wm for inicializado e de Kernel 
+exec --no-startup-id /usr/bin/apt update && /usr/bin/apt upgrade -y
+exec sudo update-initramfs -u
+
