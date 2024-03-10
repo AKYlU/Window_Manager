@@ -216,6 +216,14 @@ bindsym $mod+l exec lutris
 bindsym $mod+h exec heroic
 #bindsym $mod+b exec /home/akil/Downloads/upbge-0.36.1-linux-x86_64/blender
 
+#mpusica
+bindsym $mod+q exec playerctl pause
+bindsym $mod+r exec playerctl play
+bindsym $mod+a exec playerctl next
+bindsym $mod+z exec playerctl previous
+bindsym $mod+Tab exec pactl set-source-mute alsa_input.pci-0000_05_00.6.analog-stereo 1
+bindsym $mod+F2 exec pactl set-source-mute alsa_input.pci-0000_05_00.6.analog-stereo 0
+#bindsym $mod+' exec playerctl position 7
 # teclas para desligar ou reiniciar
 bindsym $mod+Shift+p exec sudo poweroff
 bindsym $mod+Shift+o exec sudo reboot
