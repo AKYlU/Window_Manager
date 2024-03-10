@@ -216,7 +216,7 @@ bindsym $mod+l exec lutris
 bindsym $mod+h exec heroic
 #bindsym $mod+b exec /home/akil/Downloads/upbge-0.36.1-linux-x86_64/blender
 
-#mpusica
+#música
 bindsym $mod+q exec playerctl pause
 bindsym $mod+r exec playerctl play
 bindsym $mod+a exec playerctl next
