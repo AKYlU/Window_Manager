@@ -69,10 +69,10 @@ bindsym $mod+d exec --no-startup-id dmenu_run
 # bindsym $mod+ccedilla focus right
 
 # alternatively, you can use the cursor keys:
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
-bindsym $mod+Right focus right
+#bindsym $mod+Left focus left
+#bindsym $mod+Down focus down
+#bindsym $mod+Up focus up
+#bindsym $mod+Right focus right
 
 # move focused window
 # bindsym $mod+Shift+j move left
@@ -81,16 +81,16 @@ bindsym $mod+Right focus right
 # bindsym $mod+Shift+ccedilla move right
 
 # alternatively, you can use the cursor keys:
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Right move right
+#bindsym $mod+Shift+Left move left
+#bindsym $mod+Shift+Down move down
+#bindsym $mod+Shift+Up move up
+#bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
 #bindsym $mod+h split h
 
 # split in vertical orientation
-bindsym $mod+v split v
+#bindsym $mod+v split v
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
@@ -191,7 +191,7 @@ bar {
     #barra no topo
     position top
     #obter informações
-    status_command i3status 
+    status_command i3status
     #fonte
     font pango:DejaVu Sans Mono 9
     
@@ -201,21 +201,20 @@ bar {
 for_window [class=".*"] border none
 
 # Programas para iniciar no boot
-# exec --no-startup-id export QT_QPA_PLATFORMTHEME=qt5ct
 exec vivaldi
-exec /home/akil/Downloads/Akil.sh
+exec /home/akil/Akil.sh
 # Atraso de segundos antes de iniciar os programa
-exec sleep 2 && ksnip 
-exec sleep 2 && lxpolkit
+#exec sleep 2 && lxpolkit
 
 # atalhos para executar aplicativos
-# bindsym $mod+m exec prismlauncher
+bindsym $mod+m exec env LUTRIS_SKIP_INIT=1 lutris lutris:rungameid/2
+bindsym $mod+v exec steam steam://rungameid/438100
+bindsym $mod+7 exec steam steam://rungameid/251570
+bindsym $mod+g exec env LUTRIS_SKIP_INIT=1 lutris lutris:rungameid/1
 bindsym $mod+s exec steam
 bindsym $mod+l exec lutris
 bindsym $mod+h exec heroic
-bindsym $mod+c exec code
-bindsym $Mod+k exec ksnip
-bindsym $mod+b exec /home/akil/Downloads/upbge-0.36.1-linux-x86_64/blender
+#bindsym $mod+b exec /home/akil/Downloads/upbge-0.36.1-linux-x86_64/blender
 
 # teclas para desligar ou reiniciar
 bindsym $mod+Shift+p exec sudo poweroff
@@ -231,8 +230,4 @@ bindsym $mod+F3 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -3% &&
 
 # para botar em 17% o volume
 exec --no-startup-id pactl set-sink-volume 0 17%
-
-# atualização assim que o i3wm for inicializado e de Kernel 
-exec --no-startup-id /usr/bin/apt update && /usr/bin/apt upgrade -y
-exec sudo update-initramfs -u
 
