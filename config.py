@@ -32,6 +32,14 @@ from libqtile.utils import guess_terminal
 mod = "mod4"
 terminal = guess_terminal()
 keys = [
+    Key([mod], "Tab", lazy.spawn("pactl set-source-mute alsa_input.pci-0000_05_00.6.analog-stereo 1")),
+    Key([mod], "F2", lazy.spawn("pactl set-source-mute alsa_input.pci-0000_05_00.6.analog-stereo 0")),
+    Key([mod], "z", lazy.spawn("playerctl previous")),
+    Key([mod], "a", lazy.spawn("playerctl next")),
+    Key([mod], "r", lazy.spawn("playerctl play")),
+    Key([mod], "q", lazy.spawn("playerctl pause")),
+    Key([mod], "o", lazy.spawn("sudo reboot")),
+    Key([mod], "p", lazy.spawn("sudo poweroff")),
     Key([mod], "F1", lazy.spawn("pactl set-sink-volume @DEFAULT_SINK@ +3%")),
     Key([mod], "F3", lazy.spawn("pactl set-sink-volume @DEFAULT_SINK@ -3%")),
     # Key([mod], "F3", lazy.spawn("pactl set-sink-volume @DEFAULT_SINK@ -3% && notify-send 'Volume' '$(pactl list sinks | grep "Volume:" | head -n 1 | awk '{print $5}')'")),
@@ -74,7 +82,7 @@ keys = [
     ),
     Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
     # Toggle between different layouts as defined below
-    Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
+    # Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
     Key([mod], "w", lazy.window.kill(), desc="Kill focused window"),
     Key(
         [mod],
@@ -85,7 +93,7 @@ keys = [
     Key([mod], "t", lazy.window.toggle_floating(), desc="Toggle floating on the focused window"),
     Key([mod, "control"], "r", lazy.reload_config(), desc="Reload the config"),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
-    Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
+    # Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
 ]
 
 # Add key bindings to switch VTs in Wayland.
@@ -232,3 +240,6 @@ wmname = "LG3D"
 # Iniciar o Vivaldi
 qtile.cmd_spawn("vivaldi")
 qtile.cmd_spawn("rm -r /home/akil/.local/share/Trash/files")
+qtile.cmd_spawn("rm -r /home/akil/.local/share/Steam/steamapps/compatdata/438100/pfx/drive_c/users/steamuser/AppData/LocalLow/VRChat/VRChat/Cache-WindowsPlayer")
+qtile.cmd_spawn("rm -r /tmp")
+qtile.cmd_spawn("rm -r ~/.cache")
