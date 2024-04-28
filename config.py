@@ -32,6 +32,7 @@ from libqtile.utils import guess_terminal
 mod = "mod4"
 terminal = guess_terminal()
 keys = [
+    Key([mod], "c", lazy.spawn("code")),
     Key([mod], "Tab", lazy.spawn("pactl set-source-mute alsa_input.pci-0000_05_00.6.analog-stereo 1")),
     Key([mod], "F2", lazy.spawn("pactl set-source-mute alsa_input.pci-0000_05_00.6.analog-stereo 0")),
     Key([mod], "z", lazy.spawn("playerctl previous")),
@@ -243,3 +244,4 @@ qtile.cmd_spawn("rm -r /home/akil/.local/share/Trash/files")
 qtile.cmd_spawn("rm -r /home/akil/.local/share/Steam/steamapps/compatdata/438100/pfx/drive_c/users/steamuser/AppData/LocalLow/VRChat/VRChat/Cache-WindowsPlayer")
 qtile.cmd_spawn("rm -r /tmp")
 qtile.cmd_spawn("rm -r ~/.cache")
+qtile.cmd_spawn("lxpolkit")
