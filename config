@@ -52,7 +52,7 @@ floating_modifier $mod
 bindsym $mod+Return exec  x-terminal-emulator 
 
 # kill focused window
-bindsym $mod+Shift+q kill
+bindsym $mod+w kill
 
 # start dmenu (a program launcher)
 bindsym $mod+d exec --no-startup-id dmenu_run
@@ -97,8 +97,8 @@ bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
 # bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
-bindsym $mod+e layout toggle split
+#bindsym $mod+w layout tabbed
+#bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
@@ -208,6 +208,8 @@ exec --no-startup-id rm -r /home/akil/.local/share/Trash/files
 # Programas para iniciar no boot
 exec vivaldi
 exec --no-startup-id dunst
+exec --no-startup-id easyeffects
+exec feh --bg-fill https://r4.wallpaperflare.com/wallpaper/151/452/892/makoto-shinkai-kimi-no-na-wa-anime-landscape-wallpaper-f8f6ddc8f0a0ac88207c814eb882743a.jpg
 #exec --no-startup-id steam
 # exec /home/akil/Akil.sh
 # Atraso de segundos antes de iniciar os programa
@@ -220,8 +222,9 @@ bindsym $mod+7 exec steam steam://rungameid/251570
 bindsym $mod+g exec env LUTRIS_SKIP_INIT=1 lutris lutris:rungameid/1
 bindsym $mod+s exec steam
 bindsym $mod+l exec lutris
+bindsym $mod+c exec code
 # bindsym $mod+h exec heroic
-# bindsym $mod+u exec unityhub
+bindsym $mod+u exec flatpak run com.unity.UnityHub
 bindsym $mod+b exec steam steam://rungameid/365670
 
 # mpusica
@@ -247,3 +250,4 @@ bindsym $mod+F3 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -3% &&
 # para botar em 17% o volume
 exec --no-startup-id pactl set-sink-volume 0 17%
 exec pactl set-source-volume alsa_input.pci-0000_05_00.6.analog-stereo 70%
+
