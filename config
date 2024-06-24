@@ -49,13 +49,13 @@ floating_modifier $mod
 # tiling_drag modifier titlebar
 
 # start a terminal
-bindsym $mod+Return exec  x-terminal-emulator 
+# bindsym $mod+Return exec xterm
 
 # kill focused window
 bindsym $mod+w kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec --no-startup-id dmenu_run
+# bindsym $mod+d exec --no-startup-id dmenu_run
 # A more modern dmenu replacement is rofi:
 # bindcode $mod+40 exec "rofi -modi drun,run -show drun"
 # There also is i3-dmenu-desktop which only displays applications shipping a
@@ -69,10 +69,10 @@ bindsym $mod+d exec --no-startup-id dmenu_run
 # bindsym $mod+ccedilla focus right
 
 # alternatively, you can use the cursor keys:
-#bindsym $mod+Left focus left
-#bindsym $mod+Down focus down
-#bindsym $mod+Up focus up
-#bindsym $mod+Right focus right
+# bindsym $mod+Left focus left
+# bindsym $mod+Down focus down
+# bindsym $mod+Up focus up
+# bindsym $mod+Right focus right
 
 # move focused window
 # bindsym $mod+Shift+j move left
@@ -81,33 +81,33 @@ bindsym $mod+d exec --no-startup-id dmenu_run
 # bindsym $mod+Shift+ccedilla move right
 
 # alternatively, you can use the cursor keys:
-#bindsym $mod+Shift+Left move left
-#bindsym $mod+Shift+Down move down
-#bindsym $mod+Shift+Up move up
-#bindsym $mod+Shift+Right move right
+# bindsym $mod+Shift+Left move left
+# bindsym $mod+Shift+Down move down
+# bindsym $mod+Shift+Up move up
+# bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
-#bindsym $mod+h split h
+# bindsym $mod+h split h
 
 # split in vertical orientation
-#bindsym $mod+v split v
+# bindsym $mod+v split v
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
 # bindsym $mod+s layout stacking
-#bindsym $mod+w layout tabbed
-#bindsym $mod+e layout toggle split
+# bindsym $mod+w layout tabbed
+# bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
 
 # change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
+# bindsym $mod+space focus mode_toggle
 
 # focus the parent container
-#bindsym $mod+a focus parent
+# bindsym $mod+a focus parent
 
 # focus the child container
 # bindsym $mod+d focus child
@@ -150,11 +150,11 @@ bindsym $mod+Shift+3 move container to workspace number $ws3
 # bindsym $mod+Shift+0 move container to workspace number $ws10
 
 # reload the configuration file
-#bindsym $mod+Shift+c reload
+# bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+# bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
 # resize window (you can also use the mouse for that)
 # mode "resize" {
@@ -181,7 +181,7 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 # bindsym $mod+r mode "default"
 # }
 
-#bindsym $mod+r mode "resize"
+# bindsym $mod+r mode "resize"
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
@@ -197,49 +197,43 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
     
 # }
 
-# Desativa bordas na janelas
+# Desativa bordas da janelas
 for_window [class=".*"] border none
 
-# inisiar apagando
+# iniciar e apaga arquivo
 exec --no-startup-id rm -r ~/.cache
 exec --no-startup-id rm -r /home/akil/.local/share/Steam/steamapps/compatdata/438100/pfx/drive_c/users/steamuser/AppData/LocalLow/VRChat/VRChat/Cache-WindowsPlayer
 exec --no-startup-id rm -r /tmp
 exec --no-startup-id rm -r /home/akil/.local/share/Trash/files
+
 # Programas para iniciar no boot
-exec vivaldi
-exec --no-startup-id dunst
-exec --no-startup-id easyeffects
-exec feh --bg-fill https://r4.wallpaperflare.com/wallpaper/151/452/892/makoto-shinkai-kimi-no-na-wa-anime-landscape-wallpaper-f8f6ddc8f0a0ac88207c814eb882743a.jpg
-#exec --no-startup-id steam
-# exec /home/akil/Akil.sh
-# Atraso de segundos antes de iniciar os programa
-# exec sleep 2 && lxpolkit
+exec firefox
+exec ./home/akil/sh/fullfirefox.sh
 
 # atalhos para executar aplicativos
-bindsym $mod+m exec env LUTRIS_SKIP_INIT=1 lutris lutris:rungameid/2
+bindsym $mod+n exec firefox
+bindsym $mod+m exec prismlauncher
 bindsym $mod+v exec steam steam://rungameid/438100
-bindsym $mod+7 exec steam steam://rungameid/251570
-bindsym $mod+g exec env LUTRIS_SKIP_INIT=1 lutris lutris:rungameid/1
+bindsym $mod+g exec ~/Downloads/anime-game-launcher
 bindsym $mod+s exec steam
-bindsym $mod+l exec lutris
-bindsym $mod+c exec code
-# bindsym $mod+h exec heroic
-bindsym $mod+u exec flatpak run com.unity.UnityHub
-bindsym $mod+b exec steam steam://rungameid/365670
+bindsym $mod+c exec /home/akil/VSCode-linux-x64/code
+bindsym $mod+b exec /home/akil/upbge-0.36.1-linux-x86_64/blender
 
-# mpusica
+# pula musica
 bindsym $mod+q exec playerctl pause
 bindsym $mod+r exec playerctl play
 bindsym $mod+a exec playerctl next
 bindsym $mod+z exec playerctl previous
+
+# mute ou ativo microfone
 bindsym $mod+Tab exec pactl set-source-mute alsa_input.pci-0000_05_00.6.analog-stereo 1
 bindsym $mod+F2 exec pactl set-source-mute alsa_input.pci-0000_05_00.6.analog-stereo 0
-#bindsym $mod+' exec playerctl position 7
+
 # teclas para desligar ou reiniciar
 bindsym $mod+Shift+p exec sudo poweroff
 bindsym $mod+Shift+o exec sudo reboot
 
-# Controle de volume com notificações
+# Controle de volume
 bindsym $mod+F1 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +3% && notify-send "Volume" "$(pactl list sinks | grep 'Volume:' | head -n 1 | awk '{print $5}')"
 bindsym $mod+F3 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -3% && notify-send "Volume" "$(pactl list sinks | grep 'Volume:' | head -n 1 | awk '{print $5}')"
 
@@ -249,5 +243,5 @@ bindsym $mod+F3 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -3% &&
 
 # para botar em 17% o volume
 exec --no-startup-id pactl set-sink-volume 0 17%
-exec pactl set-source-volume alsa_input.pci-0000_05_00.6.analog-stereo 70%
+exec pactl set-source-volume alsa_input.pci-0000_05_00.6.analog-stereo 100%
 
