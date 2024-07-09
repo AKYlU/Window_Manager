@@ -65,7 +65,7 @@ bindsym $mod+v exec --no-startup-id steam steam://rungameid/438100              
 bindsym $mod+g exec --no-startup-id steam steam://rungameid/11126925577112518656 # genshin
 bindsym $mod+b exec --no-startup-id steam steam://rungameid/18086004182799613952 # blender
 bindsym $mod+z exec --no-startup-id team steam://rungameid/1551360               # forza 5
-bindsym $mod+c exec --no-startup-id /home/akil/VSCode-linux-x64/code
+bindsym $mod+c exec flatpak run com.visualstudio.code
 bindsym $mod+s exec --no-startup-id steam --no-sandbox
 
 # pula musica
