@@ -67,6 +67,7 @@ bindsym $mod+b exec --no-startup-id steam steam://rungameid/18086004182799613952
 bindsym $mod+z exec --no-startup-id team steam://rungameid/1551360               # forza 5
 bindsym $mod+c exec flatpak run com.visualstudio.code
 bindsym $mod+s exec --no-startup-id steam --no-sandbox
+bindsym $mod+y exec xterm
 
 # pula musica
 bindsym $mod+q exec playerctl pause
