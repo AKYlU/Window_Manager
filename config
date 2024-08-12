@@ -1,30 +1,109 @@
-general {
-    output_format = "i3bar"
-    colors = true
-}
-order += "cpu_usage"
-order += "memory"
-order += "disk /"
-order += "tztime local"
+# Define a tecla Mod4 (geralmente a tecla Super ou Windows) como $mod
+set $mod Mod4
 
-cpu_usage {
-    format = "CPU: %usage"
+# Define que o modificador para a janela flutuante é a tecla $mod (Super/Windows)
+floating_modifier $mod
+
+# Fecha a janela ativa ao pressionar $mod+w
+bindsym $mod+w kill
+
+# Alterna a janela ativa para o modo tela cheia ao pressionar $mod+f
+bindsym $mod+f fullscreen toggle
+
+# Alterna a janela ativa entre os modos flutuante e tiling ao pressionar $mod+Shift+space
+bindsym $mod+Shift+space floating toggle
+
+# Define "1" como o nome da área de trabalho (workspace) $ws1
+set $ws1 "1"
+
+# Define "2" como o nome da área de trabalho (workspace) $ws2
+set $ws2 "2"
+
+# Define "3" como o nome da área de trabalho (workspace) $ws3
+set $ws3 "3"
+
+# Alterna para a área de trabalho (workspace) número $ws1 ao pressionar $mod+1
+bindsym $mod+1 workspace number $ws1
+
+# Alterna para a área de trabalho (workspace) número $ws2 ao pressionar $mod+2
+bindsym $mod+2 workspace number $ws2
+
+# Alterna para a área de trabalho (workspace) número $ws3 ao pressionar $mod+3
+bindsym $mod+3 workspace number $ws3
+
+# Move o contêiner (janela) ativo para a área de trabalho (workspace) número $ws1 ao pressionar $mod+Shift+1
+bindsym $mod+Shift+1 move container to workspace number $ws1
+
+# Move o contêiner (janela) ativo para a área de trabalho (workspace) número $ws2 ao pressionar $mod+Shift+2
+bindsym $mod+Shift+2 move container to workspace number $ws2
+
+# Move o contêiner (janela) ativo para a área de trabalho (workspace) número $ws3 ao pressionar $mod+Shift+3
+bindsym $mod+Shift+3 move container to workspace number $ws3
+
+# Reinicia o gerenciador de janelas ao pressionar
+bindsym $mod+Shift+r restart
+
+#você realmente quer sair do i3?
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+
+# akil
+
+bar {
+    #barra automaticamente
+    mode hide
+    #barra no topo
+    position top
+    #obter informações
+    status_command i3status 
+    #fonte
+    font pango:DejaVu Sans Mono 9
 }
 
-memory {
-    format = "RAM: %used/%total MB (%percentage_used%)"
-}
+# Desativa bordas da janelas
+for_window [class=".*"] border none
 
-disk "/" {
-    format = "Disk: %used/%total GB (%percentage_used%)"
-    format_not_mounted = "Disk: N/A"
-}
+# iniciar e apaga arquivo
+exec --no-startup-id rm -r /home/akil/.local/share/Trash/files
 
-load {
-    format = "%1min"
-}
+# Programas para iniciar no boot
+exec dbus-launch flatpak run org.mozilla.firefox
+# exec --no-startup-id sleep 4 && i3-msg '[class="Firefox"] fullscreen enable'
 
-tztime local {
-    format = "%Y-%m-%d %H:%M:%S"
-}
+# atalhos para executar aplicativos
+bindsym $mod+n exec dbus-launch flatpak run org.mozilla.firefox
+#bindsym $mod+m exec  # minecraft
+#bindsym $mod+v exec --no-startup-id steam steam://rungameid/438100               # vrchat
+#bindsym $mod+g exec --no-startup-id steam steam://rungameid/11126925577112518656 # genshin
+#bindsym $mod+b exec --no-startup-id steam steam://rungameid/18086004182799613952 # blender
+#bindsym $mod+z exec --no-startup-id team steam://rungameid/1551360               # forza 5
+bindsym $mod+c exec dbus-launch flatpak run com.visualstudio.code
+bindsym $mod+s exec dbus-launch flatpak run com.valvesoftware.Steam
+bindsym $mod+y exec xterm
+bindsym $mod+h exec dbus-launch flatpak run com.heroicgameslauncher.hgl
+
+# pula musica
+bindsym $mod+q exec playerctl pause
+bindsym $mod+r exec playerctl play
+bindsym $mod+a exec playerctl next
+
+# mute ou ativo microfone
+bindsym $mod+Tab exec pactl set-source-mute alsa_input.pci-0000_05_00.6.analog-stereo 1
+bindsym $mod+F2 exec pactl set-source-mute alsa_input.pci-0000_05_00.6.analog-stereo 0
+
+# teclas para desligar ou reiniciar
+bindsym $mod+p exec sudo zzz
+bindsym $mod+Shift+o exec sudo reboot
+
+# Controle de volume
+bindsym $mod+F1 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +3% && notify-send "Volume" "$(pactl list sinks | grep 'Volume:' | head -n 1 | awk '{print $5}')"
+bindsym $mod+F3 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -3% && notify-send "Volume" "$(pactl list sinks | grep 'Volume:' | head -n 1 | awk '{print $5}')"
+
+# Atalhos para ajustar o volume do microfone
+# bindsym $mod+F2 exec --no-startup-id pactl set-source-volume @DEFAULT_SOURCE@ +100% && notify-send "Microfone" "$(pactl list sources | grep 'Volume:' | head -n 1 | awk '{print $5}')"
+# bindsym $mod+F4 exec --no-startup-id pactl set-source-volume @DEFAULT_SOURCE@ -20% && notify-send "Microfone" "$(pactl list sources | grep 'Volume:' | head -n 1 | awk '{print $5}')"
+
+# para botar em 17% o volume
+exec --no-startup-id pactl set-sink-volume 0 17%
+exec pactl set-source-volume alsa_input.pci-0000_05_00.6.analog-stereo 100%
+
 
