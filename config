@@ -15,30 +15,21 @@ bindsym $mod+Shift+space floating toggle
 
 # Define "1" como o nome da área de trabalho (workspace) $ws1
 set $ws1 "1"
-
-# Define "2" como o nome da área de trabalho (workspace) $ws2
 set $ws2 "2"
-
-# Define "3" como o nome da área de trabalho (workspace) $ws3
 set $ws3 "3"
+set $ws4 "4"
 
 # Alterna para a área de trabalho (workspace) número $ws1 ao pressionar $mod+1
 bindsym $mod+1 workspace number $ws1
-
-# Alterna para a área de trabalho (workspace) número $ws2 ao pressionar $mod+2
 bindsym $mod+2 workspace number $ws2
-
-# Alterna para a área de trabalho (workspace) número $ws3 ao pressionar $mod+3
 bindsym $mod+3 workspace number $ws3
+bindsym $mod+4 workspace number $ws4
 
 # Move o contêiner (janela) ativo para a área de trabalho (workspace) número $ws1 ao pressionar $mod+Shift+1
 bindsym $mod+Shift+1 move container to workspace number $ws1
-
-# Move o contêiner (janela) ativo para a área de trabalho (workspace) número $ws2 ao pressionar $mod+Shift+2
 bindsym $mod+Shift+2 move container to workspace number $ws2
-
-# Move o contêiner (janela) ativo para a área de trabalho (workspace) número $ws3 ao pressionar $mod+Shift+3
 bindsym $mod+Shift+3 move container to workspace number $ws3
+bindsym $mod+Shift+4 move container to workspace number $ws4
 
 # Reinicia o gerenciador de janelas ao pressionar
 bindsym $mod+Shift+r restart
@@ -49,37 +40,55 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 # akil
 
 bar {
-    #barra automaticamente
+    # barra automaticamente
     mode hide
-    #barra no topo
+    # barra no topo
     position top
-    #obter informações
-    status_command i3status 
-    #fonte
-    font pango:DejaVu Sans Mono 9
+    # obter informações
+    status_command i3blocks
+    # fonte
+    font pango:DejaVu Sans Mono 8,9
+    
+    colors {
+    background #181818
+    statusline #ffffff
+    separator #555555
+    focused_workspace #333333 #333333 #ffffff
+    active_workspace #333333 #333333 #ffffff
+    inactive_workspace #181818 #181818 #ffffff
+    urgent_workspace #2f343f #ebcb8b #2f343f
+    }
 }
 
 # Desativa bordas da janelas
 for_window [class=".*"] border none
+for_window [class="Code"] move to workspace 2
+for_window [class="steam"] move to workspace 3
+for_window [class="heroic"] move to workspace 3
 
 # iniciar e apaga arquivo
 exec --no-startup-id rm -r /home/akil/.local/share/Trash/files
+exec mpv --vo=x11 --no-correct-pts --container-fps-override=25 --geometry=100%+0+0 --loop --wid=0x542 /home/akil/Downloads/Animation_Of_Stars-25-fps-compress.gif
+exec --no-startup-id setxkbmap -model abnt2 -layout br
+exec pulseaudio --start
+
+# iniciar a tualizasao
+exec --no-startup-id sudo xbps-install -Syu
+exec --no-startup-id sudo flatpak update
 
 # Programas para iniciar no boot
-exec dbus-launch flatpak run org.mozilla.firefox
-# exec --no-startup-id sleep 4 && i3-msg '[class="Firefox"] fullscreen enable'
+exec --no-startup-id dbus-launch flatpak run org.mozilla.firefox
+exec --no-startup-id dbus-launch flatpak run com.visualstudio.code
 
 # atalhos para executar aplicativos
-bindsym $mod+n exec dbus-launch flatpak run org.mozilla.firefox
-#bindsym $mod+m exec  # minecraft
-#bindsym $mod+v exec --no-startup-id steam steam://rungameid/438100               # vrchat
-#bindsym $mod+g exec --no-startup-id steam steam://rungameid/11126925577112518656 # genshin
-#bindsym $mod+b exec --no-startup-id steam steam://rungameid/18086004182799613952 # blender
-#bindsym $mod+z exec --no-startup-id team steam://rungameid/1551360               # forza 5
-bindsym $mod+c exec dbus-launch flatpak run com.visualstudio.code
-bindsym $mod+s exec dbus-launch flatpak run com.valvesoftware.Steam
-bindsym $mod+y exec xterm
-bindsym $mod+h exec dbus-launch flatpak run com.heroicgameslauncher.hgl
+bindsym $mod+n exec --no-startup-id dbus-launch flatpak run org.mozilla.firefox             
+bindsym $mod+c exec --no-startup-id dbus-launch flatpak run com.visualstudio.code
+bindsym $mod+s exec --no-startup-id dbus-launch flatpak run com.valvesoftware.Steam
+bindsym $mod+h exec --no-startup-id dbus-launch flatpak run com.heroicgameslauncher.hgl
+bindsym $mod+b exec --no-startup-id dbus-launch flatpak run org.upbge.UPBGE
+bindsym $mod+x exec --no-startup-id dbus-launch flatpak run org.audacityteam.Audacity
+bindsym $mod+v exec --no-startup-id dbus-launch flatpak run com.unity.UnityHub
+bindsym $mod+y exec --no-startup-id xterm
 
 # pula musica
 bindsym $mod+q exec playerctl pause
@@ -105,5 +114,6 @@ bindsym $mod+F3 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -3% &&
 # para botar em 17% o volume
 exec --no-startup-id pactl set-sink-volume 0 17%
 exec pactl set-source-volume alsa_input.pci-0000_05_00.6.analog-stereo 100%
+
 
 
