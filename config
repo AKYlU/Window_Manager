@@ -2,13 +2,13 @@
 set $mod Mod4
 
 # Define que o modificador para a janela flutuante é a tecla $mod (Super/Windows)
-floating_modifier $mod
+floating_modifier $mod normal
 
 # Fecha a janela ativa ao pressionar $mod+w
 bindsym $mod+w kill
 
 # Alterna a janela ativa para o modo tela cheia ao pressionar $mod+f
-bindsym $mod+f fullscreen toggle
+bindsym $mod+f fullscreen toggle 
 
 # Alterna a janela ativa entre os modos flutuante e tiling ao pressionar $mod+Shift+space
 bindsym $mod+Shift+space floating toggle
@@ -31,13 +31,29 @@ bindsym $mod+Shift+2 move container to workspace number $ws2
 bindsym $mod+Shift+3 move container to workspace number $ws3
 bindsym $mod+Shift+4 move container to workspace number $ws4
 
-# Reinicia o gerenciador de janelas ao pressionar
-bindsym $mod+Shift+r restart
 
-#você realmente quer sair do i3?
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+# você realmente quer sair do i3?
+# bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+
+# Exit sway (logs you out of your Wayland session)
+bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
 
 # akil
+
+# Reinicia o gerenciador de janelas ao pressionar
+    bindsym $mod+Shift+r reload
+
+        # Start your launcher
+    bindsym $mod+d exec $menu
+
+        # Start a terminal
+    bindsym $mod+Return exec $$term
+
+# Your preferred terminal emulator
+set $term alacritty --config-file /etc/alacritty/alacritty.toml
+
+# include /etc/sway/config.d/*.conf
+include ~/.config/sway/config.d/*
 
 bar {
     # barra automaticamente
@@ -49,51 +65,55 @@ bar {
     # fonte
     font pango:DejaVu Sans Mono 8,9
     
-    colors {
-    background #181818
-    statusline #f6
-    separator #555555
-    focused_workspace #333333 #333333 #f6
-    active_workspace #333333 #333333 #f6
-    inactive_workspace #181818 #181818 #f6
-    urgent_workspace #2f343f #ebcb8b #2f343f
+     colors {
+     background #181818
+     statusline #ffffff
+     separator #555555
+     focused_workspace #333333 #333333 #ffffff
+     active_workspace #333333 #333333 #ffffff
+     inactive_workspace #181818 #181818 #ffffff
+     urgent_workspace #2f343f #ebcb8b #2f343f
     }
 }
 
 # Desativa bordas da janelas
 for_window [class=".*"] border none
+for_window [class="firefox"] move to workspace 1
 for_window [class="Code"] move to workspace 2
 for_window [class="steam"] move to workspace 3
 for_window [class="heroic"] move to workspace 3
+for_window [class="unity"] move to workspace 4
+for_window [class="Unity"] move to workspace 4
 
 # Reduzir automaticamente a nova janela em modo tiling, sem afetar janelas flutuantes
 for_window [tiling] resize shrink width 200 px or 20 ppt; resize shrink height 200 px or 20 pptt
 
 # iniciar e apaga arquivo
-exec --no-startup-id rm -r /home/akil/.local/share/Trash/files
-exec mpv --vo=x11 --no-correct-pts --container-fps-override=25 --geometry=100%+0+0 --loop --wid=0x542 /home/akil/Downloads/Animation_Of_Stars-25-fps-compress.gif
-exec --no-startup-id setxkbmap -model abnt2 -layout br
-exec pulseaudio --start
+exec rm -r /home/akil/.local/share/Trash/files
+# exec mpv --vo=x11 --no-correct-pts --container-fps-override=25 --geometry=100%+0+0 --loop --wid=0x542 /home/akil/Downloads/Animation_Of_Stars-25-fps-compress.gif
+exec setxkbmap -model abnt2 -layout br
+# exec pulseaudio --start
 
 # iniciar a tualizasao
-exec --no-startup-id sudo xbps-install -Syu
-exec --no-startup-id sudo flatpak update
+exec sudo xbps-install -Syu
+exec sudo flatpak update
 
 # Programas para iniciar no boot
-exec --no-startup-id flatpak run org.mozilla.firefox
-exec --no-startup-id flatpak run com.visualstudio.code
-exec --no-startup-id flatpak run com.valvesoftware.Steam
+exec firefox # flatpak run org.mozilla.firefox
+exec code    # flatpak run com.visualstudio.code
+exec steam   # flatpak run com.valvesoftware.Steam
+exec flatpak run com.unity.UnityHub
 
-# atalhos para executar aplicativos
-bindsym $mod+n exec --no-startup-id flatpak run org.mozilla.firefox             
-bindsym $mod+c exec --no-startup-id dbus-launch flatpak run com.visualstudio.code
-bindsym $mod+s exec --no-startup-id dbus-launch flatpak run com.valvesoftware.Steam
-bindsym $mod+h exec --no-startup-id flatpak run com.heroicgameslauncher.hgl
-bindsym $mod+b exec --no-startup-id flatpak run org.upbge.UPBGE
-bindsym $mod+x exec --no-startup-id flatpak run org.audacityteam.Audacity
-bindsym $mod+v exec --no-startup-id dbus-launch flatpak run com.unity.UnityHub
-bindsym $mod+m exec --no-startup-id flatpak run org.prismlauncher.PrismLauncher
-bindsym $mod+y exec --no-startup-id xterm
+# atalhos para executar aplicativos ## dbus-launch
+bindsym $mod+n exec firefox # flatpak run org.mozilla.firefox             
+bindsym $mod+c exec code    # flatpak run com.visualstudio.code
+bindsym $mod+s exec steam   #flatpak run com.valvesoftware.Steam
+bindsym $mod+h exec flatpak run com.heroicgameslauncher.hgl
+bindsym $mod+b exec flatpak run org.upbge.UPBGE
+bindsym $mod+x exec flatpak run org.audacityteam.Audacity
+bindsym $mod+v exec flatpak run com.unity.UnityHub
+bindsym $mod+m exec flatpak run org.prismlauncher.PrismLauncher
+bindsym $mod+y exec xterm
 
 # pula musica
 bindsym $mod+q exec playerctl pause
@@ -101,24 +121,22 @@ bindsym $mod+r exec playerctl play
 bindsym $mod+a exec playerctl next
 
 # mute ou ativo microfone
-bindsym $mod+Tab exec pactl set-source-mute alsa_input.pci-0000_05_00.6.analog-stereo 1
-bindsym $mod+F5 exec pactl set-source-mute alsa_input.pci-0000_05_00.6.analog-stereo 0
+# bindsym $mod+Tab exec pactl set-source-mute alsa_input.pci-0000_05_00.6.analog-stereo 1
+# bindsym $mod+F5 exec pactl set-source-mute alsa_input.pci-0000_05_00.6.analog-stereo 0
 
-# teclas para desligar ou reiniciar
-bindsym $mod+p exec sudo zzz
+# teclas para desligar ou reiniciar voidlinux zzz
+bindsym $mod+p exec sudo systemctl suspend
 bindsym $mod+Shift+o exec sudo reboot
 
 # Controle de volume
-bindsym $mod+F1 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +3% && notify-send "Volume" "$(pactl list sinks | grep 'Volume:' | head -n 1 | awk '{print $5}')"
-bindsym $mod+F3 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -3% && notify-send "Volume" "$(pactl list sinks | grep 'Volume:' | head -n 1 | awk '{print $5}')"
+bindsym $mod+F1 exec pactl set-sink-volume @DEFAULT_SINK@ +3% && notify-send "Volume" "$(pactl list sinks | grep 'Volume:' | head -n 1 | awk '{print $5}')"
+bindsym $mod+F3 exec pactl set-sink-volume @DEFAULT_SINK@ -3% && notify-send "Volume" "$(pactl list sinks | grep 'Volume:' | head -n 1 | awk '{print $5}')"
 
 # Atalhos para ajustar o volume do microfone
-bindsym $mod+F2 exec --no-startup-id pactl set-source-volume @DEFAULT_SOURCE@ +20% && notify-send "Microfone" "$(pactl list sources | grep 'Volume:' | head -n 1 | awk '{print $5}')"
-bindsym $mod+F4 exec --no-startup-id pactl set-source-volume @DEFAULT_SOURCE@ -20% && notify-send "Microfone" "$(pactl list sources | grep 'Volume:' | head -n 1 | awk '{print $5}')"
+bindsym $mod+F2 exec pactl set-source-volume @DEFAULT_SOURCE@ +20% && notify-send "Microfone" "$(pactl list sources | grep 'Volume:' | head -n 1 | awk '{print $5}')"
+bindsym $mod+F4 exec pactl set-source-volume @DEFAULT_SOURCE@ -20% && notify-send "Microfone" "$(pactl list sources | grep 'Volume:' | head -n 1 | awk '{print $5}')"
 
 # para botar em 17% o volume
-exec --no-startup-id pactl set-sink-volume 0 8%
+exec pactl set-sink-volume 0 8%
 exec pactl set-source-volume alsa_input.pci-0000_05_00.6.analog-stereo 100%
-
-
 
