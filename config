@@ -2,7 +2,7 @@
 set $mod Mod4
 
 # Define que o modificador para a janela flutuante é a tecla $mod (Super/Windows)
-floating_modifier $mod normal
+floating_modifier $mod
 
 # Fecha a janela ativa ao pressionar $mod+w
 bindsym $mod+w kill
@@ -20,19 +20,12 @@ set $ws3 "3"
 set $ws4 "4"
 set $ws5 "5"
 
-# Alterna para a área de trabalho (workspace) número $ws1 ao pressionar $mod+1
-bindsym $mod+1 workspace number $ws1
-bindsym $mod+2 workspace number $ws2
-bindsym $mod+3 workspace number $ws3
-bindsym $mod+4 workspace number $ws4
-bindsym $mod+5 workspace number $ws5
-
-# Move o contêiner (janela) ativo para a área de trabalho (workspace) número $ws1 ao pressionar $mod+Shift+1
-bindsym $mod+Shift+1 move container to workspace number $ws1
-bindsym $mod+Shift+2 move container to workspace number $ws2
-bindsym $mod+Shift+3 move container to workspace number $ws3
-bindsym $mod+Shift+4 move container to workspace number $ws4
-bindsym $mod+Shift+5 move container to workspace number $ws5
+# A1lterna para a área de trabalho (workspace) número $ws1 ao pressionar $mod+1
+bindsym $mod+1 workspace number $ws1; bindsym $mod+Shift+1 move container to workspace number $ws1
+bindsym $mod+2 workspace number $ws2; bindsym $mod+Shift+2 move container to workspace number $ws2
+bindsym $mod+3 workspace number $ws3; bindsym $mod+Shift+3 move container to workspace number $ws3
+bindsym $mod+4 workspace number $ws4; bindsym $mod+Shift+4 move container to workspace number $ws4
+bindsym $mod+5 workspace number $ws5; bindsym $mod+Shift+5 move container to workspace number $ws5
 
 # você realmente quer sair do i3?
 # bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
@@ -87,7 +80,7 @@ for_window [class="steam"] move to workspace 3
 for_window [class="heroic"] move to workspace 3
 for_window [class="unity"] move to workspace 4
 for_window [class="Unity"] move to workspace 4
-for_window [class="Boxes"] move to workspace 5
+for_window [class="gnome-boxes"] move to workspace 5
 
 # Reduzir automaticamente a nova janela em modo tiling, sem afetar janelas flutuantes
 for_window [tiling] resize shrink width 200 px or 20 ppt; resize shrink height 200 px or 20 pptt
@@ -101,20 +94,19 @@ exec setxkbmap -model abnt2 -layout br
 # iniciar a tualizasao
 
 # exec sudo xbps-install -Syu
-exec sudo flatpak update
-exec sudo zypper dup
+# xec sudo flatpak update
+# exec sudo zypper dup
 
 # Programas para iniciar no boot
 exec firefox # flatpak run org.mozilla.firefox
-# exec code    # flatpak run com.visualstudio.code
-exec steam   # flatpak run com.valvesoftware.Steam
+exec flatpak run com.valvesoftware.Steam   #steam
 # exec  flatpak run com.unity.UnityHub
 # exec  gnome-boxes
 
 # atalhos para executar aplicativos ## dbus-launch
 bindsym $mod+n exec firefox # flatpak run org.mozilla.firefox             
-bindsym $mod+c exec code    # flatpak run com.visualstudio.code
-bindsym $mod+s exec steam   #flatpak run com.valvesoftware.Steam
+bindsym $mod+g exec gnome-boxes
+bindsym $mod+s exec flatpak run com.valvesoftware.Steam   #steam
 bindsym $mod+h exec flatpak run com.heroicgameslauncher.hgl
 bindsym $mod+b exec flatpak run org.upbge.UPBGE
 # bindsym $mod+x exec flatpak run org.audacityteam.Audacity
