@@ -34,22 +34,20 @@ set $ws5 "5"
 bindsym $mod+5 workspace number $ws5
 bindsym $mod+Shift+5 move container to workspace number $ws5
 
-# você realmente quer sair do i3?
+# você realmente quer sair do i3 ou sway?
 # bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
-
-# Exit sway (logs you out of your Wayland session)
 bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
 
 # akil
 
 # Reinicia o gerenciador de janelas ao pressionar
-    bindsym $mod+Shift+r reload
+bindsym $mod+Shift+r reload
 
-        # Start your launcher
-    bindsym $mod+d exec $menu
+# Start your launcher
+bindsym $mod+d exec $menu
 
-        # Start a terminal
-    bindsym $mod+Return exec $$term
+# Start a terminal
+bindsym $mod+Return exec $$term
 
 # Your preferred terminal emulator
 set $term alacritty --config-file /etc/alacritty/alacritty.toml
@@ -65,7 +63,7 @@ bar {
     # obter informações blocks
     status_command i3blocks
     # fonte
-    font pango:DejaVu Sans Mono 8,9
+    font pango:DejaVu Sans Mono 9
     
     
      colors {
@@ -79,47 +77,31 @@ bar {
     }
 }
 
-# Desativa bordas da janelas
-for_window [class=".*"] border none
-for_window [class="firefox"] move to workspace 1
-for_window [class="Code"] move to workspace 2
-for_window [class="steam"] move to workspace 3
-for_window [class="heroic"] move to workspace 3
-for_window [class="unity"] move to workspace 4
-for_window [class="Unity"] move to workspace 4
-for_window [class="gnome-boxes"] move to workspace 5
-
-# Reduzir automaticamente a nova janela em modo tiling, sem afetar janelas flutuantes
-for_window [tiling] resize shrink width 200 px or 20 ppt; resize shrink height 200 px or 20 pptt
-
-# iniciar e apaga arquivo
-exec rm -r /home/akil/.local/share/Trash/files
-# exec mpv --vo=x11 --no-correct-pts --container-fps-override=25 --geometry=100%+0+0 --loop --wid=0x542 /home/akil/Downloads/Animation_Of_Stars-25-fps-compress.gif
-exec setxkbmap -model abnt2 -layout br
-# exec pulseaudio --start
-
 # iniciar a tualizasao
-
 # exec sudo xbps-install -Syu
-# xec sudo flatpak update
+# exec sudo flatpak update
 # exec sudo zypper dup
 
 # Programas para iniciar no boot
 exec firefox # flatpak run org.mozilla.firefox
-exec flatpak run com.valvesoftware.Steam   #steam
+exec steam # flatpak run com.valvesoftware.Steam
+exec alacritty -e lvim
+exec ~/restore_state.sh
 # exec  flatpak run com.unity.UnityHub
 # exec  gnome-boxes
 
 # atalhos para executar aplicativos ## dbus-launch
 bindsym $mod+n exec firefox # flatpak run org.mozilla.firefox             
 bindsym $mod+g exec gnome-boxes
-bindsym $mod+s exec flatpak run com.valvesoftware.Steam   #steam
+bindsym $mod+s exec steam # flatpak run com.valvesoftware.Steam
 bindsym $mod+h exec flatpak run com.heroicgameslauncher.hgl
 bindsym $mod+b exec flatpak run org.upbge.UPBGE
-# bindsym $mod+x exec flatpak run org.audacityteam.Audacity
+bindsym $mod+x exec audacity # flatpak run org.audacityteam.Audacity
 bindsym $mod+v exec steam steam://rungameid/438100
 bindsym $mod+u exec flatpak run com.unity.UnityHub
-bindsym $mod+m exec flatpak run org.prismlauncher.PrismLauncher
+bindsym $mod+m exec prismlauncher # flatpak run org.prismlauncher.PrismLauncher
+bindsym $mod+l exec alacritty -e sudo lvim
+bindsym $mod+y exec ~/save_state.sh
 
 # pula musica
 bindsym $mod+q exec playerctl pause
@@ -167,14 +149,6 @@ bindsym $mod+Shift+minus move scratchpad
 # abnt2 apostrophe
 bindsym $mod+Grave scratchpad show
 
-for_window [window_role="pop-up"] floating enable
+# exec_always --no-startup-id picom -b
 
-# for_window [title="^Picture in picture$"] \
-#     floating enable, move position 277 850, sticky enable, border none
-
-# sticky enable,
-for_window [app_id="firefox" title="^Picture-in-Picture$"] \
-    floating enable, move position 1420 0, resize set width 600 height 340, border none nofocus
-
-exec_always --no-startup-id picom -b
 
