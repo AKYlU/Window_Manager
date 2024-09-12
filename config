@@ -86,7 +86,9 @@ bar {
 exec firefox # flatpak run org.mozilla.firefox
 exec steam # flatpak run com.valvesoftware.Steam
 exec alacritty -e lvim
-exec ~/restore_state.sh
+
+# Executar o script de salvamento a cada hora
+exec sh -c 'while true; do ~/save_state.sh; sleep 3600; done'
 # exec  flatpak run com.unity.UnityHub
 # exec  gnome-boxes
 
@@ -96,12 +98,11 @@ bindsym $mod+g exec gnome-boxes
 bindsym $mod+s exec steam # flatpak run com.valvesoftware.Steam
 bindsym $mod+h exec flatpak run com.heroicgameslauncher.hgl
 bindsym $mod+b exec flatpak run org.upbge.UPBGE
-bindsym $mod+x exec audacity # flatpak run org.audacityteam.Audacity
+# bindsym $mod+x exec audacity # flatpak run org.audacityteam.Audacity
 bindsym $mod+v exec steam steam://rungameid/438100
 bindsym $mod+u exec flatpak run com.unity.UnityHub
 bindsym $mod+m exec prismlauncher # flatpak run org.prismlauncher.PrismLauncher
 bindsym $mod+l exec alacritty -e sudo lvim
-bindsym $mod+y exec ~/save_state.sh
 
 # pula musica
 bindsym $mod+q exec playerctl pause
@@ -129,10 +130,7 @@ bindsym $mod+F3 exec pactl set-sink-volume @DEFAULT_SINK@ -3% && notify-send "Vo
 exec pactl set-sink-volume 0 8%
 exec pactl set-source-volume alsa_input.pci-0000_05_00.6.analog-stereo 100%
 
-bindsym $mod+space focus mode_toggle
-
 # focus_follows_mouse no
-
 input type:pointer {
     accel_profile flat
 }
@@ -149,6 +147,11 @@ bindsym $mod+Shift+minus move scratchpad
 # abnt2 apostrophe
 bindsym $mod+Grave scratchpad show
 
-# exec_always --no-startup-id picom -b
+#bindsym $mod+F1 move position center
+#bindsym $mod+y move position -200 -200
+#bindsym $mod+2 move position 100% 0
+#bindsym $mod+3 move position 0 100%
+#bindsym $mod+4 move position 100% 100%
 
-
+bindsym $mod+x exec swaymsg opacity 0.4 
+bindsym $mod+c exec swaymsg opacity 1
