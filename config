@@ -83,8 +83,8 @@ bar {
 # exec sudo zypper dup
 
 # Programas para iniciar no boot
-exec firefox # flatpak run org.mozilla.firefox
-exec steam # flatpak run com.valvesoftware.Steam
+exec firefox 
+exec steam 
 # exec alacritty -e sudo lvim
 
 # Executar o script de salvamento a cada hora
@@ -92,15 +92,15 @@ exec steam # flatpak run com.valvesoftware.Steam
 # exec  gnome-boxes
 
 # atalhos para executar aplicativos ## dbus-launch
-bindsym $mod+n exec firefox # flatpak run org.mozilla.firefox             
+bindsym $mod+n exec firefox       
 bindsym $mod+g exec gnome-boxes
-bindsym $mod+s exec steam # flatpak run com.valvesoftware.Steam
+bindsym $mod+s exec steam
 bindsym $mod+h exec flatpak run com.heroicgameslauncher.hgl
 bindsym $mod+b exec flatpak run org.upbge.UPBGE
 # bindsym $mod+x exec audacity # flatpak run org.audacityteam.Audacity
 bindsym $mod+v exec steam steam://rungameid/438100
 bindsym $mod+u exec flatpak run com.unity.UnityHub
-bindsym $mod+m exec prismlauncher # flatpak run org.prismlauncher.PrismLauncher
+bindsym $mod+m exec prismlauncher
 bindsym $mod+l exec alacritty -e sudo lvim
 
 # pula musica
@@ -140,11 +140,8 @@ input type:keyboard {
 }
 
 # Configuração do assento
-seat * {
-    hide_cursor 10000          # Esconde o cursor após 10 segundos de inatividade
-    hide_cursor when-typing enable  # Esconde o cursor enquanto estiver digitando
-}
-
+seat * hide_cursor 10000              
+seat * hide_cursor when-typing enable
 # Atalhos de teclado
 
 # Move a janela para o scratchpad
@@ -154,8 +151,8 @@ bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+Grave scratchpad show
 
 # Opacidade
-bindsym $mod+x exec swaymsg opacity 0.4  # Define a opacidade para 40%
-bindsym $mod+c exec swaymsg opacity 1    # Define a opacidade para 100%
+bindsym $mod+x exec swaymsg opacity 0.4  
+bindsym $mod+c exec swaymsg opacity 1    
 
 # Atalhos comentados de movimentação
 # bindsym $mod+F1 move position center
