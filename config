@@ -85,10 +85,9 @@ bar {
 # Programas para iniciar no boot
 exec firefox # flatpak run org.mozilla.firefox
 exec steam # flatpak run com.valvesoftware.Steam
-exec alacritty -e lvim
+# exec alacritty -e sudo lvim
 
 # Executar o script de salvamento a cada hora
-exec sh -c 'while true; do ~/save_state.sh; sleep 3600; done'
 # exec  flatpak run com.unity.UnityHub
 # exec  gnome-boxes
 
@@ -130,28 +129,38 @@ bindsym $mod+F3 exec pactl set-sink-volume @DEFAULT_SINK@ -3% && notify-send "Vo
 exec pactl set-sink-volume 0 8%
 exec pactl set-source-volume alsa_input.pci-0000_05_00.6.analog-stereo 100%
 
-# focus_follows_mouse no
+# Configuração do Mouse
 input type:pointer {
     accel_profile flat
 }
 
+# Configuração do Teclado (layouts: us, us)
 input type:keyboard {
     xkb_layout us,us
 }
 
-seat * hide_cursor 10000
-seat * hide_cursor when-typing enable
+# Configuração do assento
+seat * {
+    hide_cursor 10000          # Esconde o cursor após 10 segundos de inatividade
+    hide_cursor when-typing enable  # Esconde o cursor enquanto estiver digitando
+}
 
+# Atalhos de teclado
+
+# Move a janela para o scratchpad
 bindsym $mod+Shift+minus move scratchpad
 
-# abnt2 apostrophe
+# Mostra a janela do scratchpad (abnt2 apóstrofo)
 bindsym $mod+Grave scratchpad show
 
-#bindsym $mod+F1 move position center
-#bindsym $mod+y move position -200 -200
-#bindsym $mod+2 move position 100% 0
-#bindsym $mod+3 move position 0 100%
-#bindsym $mod+4 move position 100% 100%
+# Opacidade
+bindsym $mod+x exec swaymsg opacity 0.4  # Define a opacidade para 40%
+bindsym $mod+c exec swaymsg opacity 1    # Define a opacidade para 100%
 
-bindsym $mod+x exec swaymsg opacity 0.4 
-bindsym $mod+c exec swaymsg opacity 1
+# Atalhos comentados de movimentação
+# bindsym $mod+F1 move position center
+# bindsym $mod+y move position -200 -200
+# bindsym $mod+2 move position 100% 0
+# bindsym $mod+3 move position 0 100%
+# bindsym $mod+4 move position 100% 100%
+
