@@ -34,9 +34,9 @@ set $ws5 "5"
 bindsym $mod+5 workspace number $ws5
 bindsym $mod+Shift+5 move container to workspace number $ws5
 
-# você realmente quer sair do i3 ou sway?
-# bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
-bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
+# sair do i3 ou sway
+# bindsym $mod+Shift+e exec i3-msg exit
+bindsym $mod+Shift+e exec swaymsg exit
 
 # akil
 
@@ -118,15 +118,15 @@ bindsym $mod+p exec sudo systemctl suspend
 bindsym $mod+Shift+o exec sudo reboot
 
 # Controle de volume
-bindsym $mod+F1 exec pactl set-sink-volume @DEFAULT_SINK@ +3% && notify-send "Volume" "$(pactl list sinks | grep 'Volume:' | head -n 1 | awk '{print $5}')"
-bindsym $mod+F3 exec pactl set-sink-volume @DEFAULT_SINK@ -3% && notify-send "Volume" "$(pactl list sinks | grep 'Volume:' | head -n 1 | awk '{print $5}')"
+bindsym $mod+F1 exec pactl set-sink-volume @DEFAULT_SINK@ +3% 
+bindsym $mod+F3 exec pactl set-sink-volume @DEFAULT_SINK@ -3%
 
 # Atalhos para ajustar o volume do microfone
-# bindsym $mod+F2 exec pactl set-source-volume @DEFAULT_SOURCE@ +20% && notify-send "Microfone" "$(pactl list sources | grep 'Volume:' | head -n 1 | awk '{print $5}')"
-# bindsym $mod+F4 exec pactl set-source-volume @DEFAULT_SOURCE@ -20% && notify-send "Microfone" "$(pactl list sources | grep 'Volume:' | head -n 1 | awk '{print $5}')"
+# bindsym $mod+F2 exec pactl set-source-volume @DEFAULT_SOURCE@ +20% 
+# bindsym $mod+F4 exec pactl set-source-volume @DEFAULT_SOURCE@ -20% 
 
-# para botar em 17% o volume
-exec pactl set-sink-volume 0 8%
+# para botar em 8% o volume
+# exec pactl set-sink-volume 0 8%
 exec pactl set-source-volume alsa_input.pci-0000_05_00.6.analog-stereo 100%
 
 # Configuração do Mouse
@@ -142,7 +142,6 @@ input type:keyboard {
 # Configuração do assento
 seat * hide_cursor 10000              
 seat * hide_cursor when-typing enable
-# Atalhos de teclado
 
 # Move a janela para o scratchpad
 bindsym $mod+Shift+minus move scratchpad
@@ -154,7 +153,7 @@ bindsym $mod+Grave scratchpad show
 bindsym $mod+x exec swaymsg opacity 0.4  
 bindsym $mod+c exec swaymsg opacity 1    
 
-# Atalhos comentados de movimentação
+# movimentação
 # bindsym $mod+F1 move position center
 # bindsym $mod+y move position -200 -200
 # bindsym $mod+2 move position 100% 0
