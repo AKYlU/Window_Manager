@@ -36,7 +36,7 @@ bindsym $mod+Shift+5 move container to workspace number $ws5
 
 # sair do i3 ou sway
 # bindsym $mod+Shift+e exec i3-msg exit
-bindsym $mod+Shift+e exec swaymsg exit
+bindsym $mod+Shift+i exec swaymsg exit
 
 # akil
 
@@ -91,35 +91,43 @@ exec steam
 # exec  flatpak run com.unity.UnityHub
 # exec  gnome-boxes
 
-# atalhos para executar aplicativos ## dbus-launch
-bindsym $mod+n exec firefox       
-bindsym $mod+g exec gnome-boxes
-bindsym $mod+s exec steam
-bindsym $mod+h exec flatpak run com.heroicgameslauncher.hgl
-bindsym $mod+b exec flatpak run org.upbge.UPBGE
-# bindsym $mod+x exec audacity # flatpak run org.audacityteam.Audacity
-bindsym $mod+v exec steam steam://rungameid/438100
-bindsym $mod+u exec flatpak run com.unity.UnityHub
-bindsym $mod+m exec prismlauncher
-bindsym $mod+l exec alacritty -e sudo lvim
+# atalhos para executar aplicativos voidlinux>dbus-launch
+bindsym {
+$mod+n exec firefox       
+$mod+g exec gnome-boxes
+$mod+s exec steam
+$mod+h exec flatpak run com.heroicgameslauncher.hgl
+$mod+b exec flatpak run org.upbge.UPBGE
+# $mod+x exec audacity # flatpak run org.audacityteam.Audacity
+$mod+v exec steam steam://rungameid/438100
+$mod+u exec flatpak run com.unity.UnityHub
+$mod+m exec prismlauncher
+$mod+l exec alacritty -e sudo lvim
+}
 
 # pula musica
-bindsym $mod+q exec playerctl pause
-bindsym $mod+r exec playerctl play
-bindsym $mod+a exec playerctl next
-bindsym $mod+z exec playerctl previous
+bindsym {
+$mod+q exec playerctl pause
+$mod+r exec playerctl play
+$mod+a exec playerctl next
+$mod+z exec playerctl previous
+}
 
 # mute ou ativo microfone
 # bindsym $mod+Tab exec pactl set-source-mute alsa_input.pci-0000_05_00.6.analog-stereo 1
 # bindsym $mod+F5 exec pactl set-source-mute alsa_input.pci-0000_05_00.6.analog-stereo 0
 
 # teclas para desligar ou reiniciar voidlinux zzz
-bindsym $mod+p exec sudo systemctl suspend
-bindsym $mod+Shift+o exec sudo reboot
+bindsym {
+$mod+p exec sudo systemctl suspend
+$mod+Shift+o exec sudo reboot
+}
 
 # Controle de volume
-bindsym $mod+F1 exec pactl set-sink-volume @DEFAULT_SINK@ +3% 
-bindsym $mod+F3 exec pactl set-sink-volume @DEFAULT_SINK@ -3%
+bindsym {
+$mod+F1 exec pactl set-sink-volume @DEFAULT_SINK@ +3% 
+$mod+F3 exec pactl set-sink-volume @DEFAULT_SINK@ -3%
+}
 
 # Atalhos para ajustar o volume do microfone
 # bindsym $mod+F2 exec pactl set-source-volume @DEFAULT_SOURCE@ +20% 
