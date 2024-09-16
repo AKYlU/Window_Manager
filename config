@@ -30,10 +30,6 @@ set $ws4 "4"
 bindsym $mod+4 workspace number $ws4
 bindsym $mod+Shift+4 move container to workspace number $ws4
 
-set $ws5 "5"
-bindsym $mod+5 workspace number $ws5
-bindsym $mod+Shift+5 move container to workspace number $ws5
-
 # sair do i3 ou sway
 # bindsym $mod+Shift+e exec i3-msg exit
 bindsym $mod+Shift+i exec swaymsg exit
@@ -84,7 +80,7 @@ bar {
 
 # Programas para iniciar no boot
 exec firefox 
-exec steam 
+exec steam -startup -console steam://open/games
 # exec alacritty -e sudo lvim
 
 # Executar o script de salvamento a cada hora
@@ -95,7 +91,7 @@ exec steam
 bindsym {
 $mod+n exec firefox       
 $mod+g exec gnome-boxes
-$mod+s exec steam
+$mod+s exec steam -startup -console steam://open/games
 $mod+h exec flatpak run com.heroicgameslauncher.hgl
 $mod+b exec flatpak run org.upbge.UPBGE
 # $mod+x exec audacity # flatpak run org.audacityteam.Audacity
