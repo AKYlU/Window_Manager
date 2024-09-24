@@ -14,6 +14,10 @@ bindsym $mod+f fullscreen toggle
 bindsym $mod+Shift+space floating toggle
 
 # A1lterna para a área de trabalho (workspace) número $ws1 ao pressionar $mod+1
+set $wsGrave "Grave"
+bindsym $mod+Grave workspace $wsGrave
+bindsym $mod+Shift+Grave move container to workspace $wsGrave
+
 set $ws1 "1"
 bindsym $mod+1 workspace number $ws1
 bindsym $mod+Shift+1 move container to workspace number $ws1
@@ -25,10 +29,6 @@ bindsym $mod+Shift+2 move container to workspace number $ws2
 set $ws3 "3"
 bindsym $mod+3 workspace number $ws3
 bindsym $mod+Shift+3 move container to workspace number $ws3
-
-set $ws4 "4"
-bindsym $mod+4 workspace number $ws4
-bindsym $mod+Shift+4 move container to workspace number $ws4
 
 # sair do i3 ou sway
 # bindsym $mod+Shift+e exec i3-msg exit
@@ -52,27 +52,26 @@ set $term alacritty
 include /etc/sway/config.d/*.conf
 # include ~/.config/sway/config.d/*
 
-bar {
-    # barra automaticamente
-    mode hide
-    # barra no topo
-    position top
-    # obter informações blocks
-    status_command i3blocks
-    # fonte
-    font pango:DejaVu Sans Mono 9
-    
-    
-     colors {
-     background #ff4d84
-     statusline #ffffff
-     separator #555555
-     focused_workspace #803060 #803060 #ffffff
-     active_workspace #333333 #333333 #ffffff
-     inactive_workspace #ff4d84 #ff4d84 #ffffff
-     urgent_workspace #2f343f #ffffff #2f343f
-    }
-}
+#bar {    # barra automaticamente
+#    mode hide
+#    # barra no topo
+#    position top
+#    # obter informações blocks
+#    status_command i3blocks
+#    # fonte
+#    font pango:DejaVu Sans Mono 9
+#    
+#    
+#     colors {
+#     background #ff4d84
+#     statusline #ffffff
+#     separator #555555
+#     focused_workspace #803060 #803060 #ffffff
+#     active_workspace #333333 #333333 #ffffff
+#     inactive_workspace #ff4d84 #ff4d84 #ffffff
+#    urgent_workspace #2f343f #ffffff #2f343f
+#    }
+#}
 
 # iniciar a tualizasao
 # exec sudo xbps-install -Syu
@@ -99,7 +98,7 @@ $mod+h exec flatpak run com.heroicgameslauncher.hgl
 $mod+b exec flatpak run org.upbge.UPBGE
 # $mod+x exec audacity # flatpak run org.audacityteam.Audacity
 $mod+v exec steam steam://rungameid/438100
-$mod+u exec flatpak run com.unity.UnityHub
+$mod+u exec steam steam://rungameid/15077473836418990080
 $mod+m exec prismlauncher
 $mod+l exec alacritty -e sudo lvim
 }
@@ -154,7 +153,7 @@ seat * hide_cursor when-typing enable
 bindsym $mod+Shift+minus move scratchpad
 
 # Mostra a janela do scratchpad (abnt2 apóstrofo)
-bindsym $mod+Grave scratchpad show
+# bindsym $mod+Grave scratchpad show
 
 # Opacidade
 bindsym $mod+x exec swaymsg opacity 0.4  
