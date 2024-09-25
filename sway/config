@@ -7,43 +7,6 @@ set $mod Mod4
 # para a janela flutuante é a tecla $mod (Super/Windows)
 floating_modifier $mod
 
-# Fecha a janela
-bindsym $mod+w kill
-
-# para o modo tela cheia
-bindsym $mod+f fullscreen toggle 
-
-# Alterna os modos flutuante e tiling 
-bindsym $mod+Shift+space floating toggle
-
-# A1lterna áreas de trabalho
-set $wsGrave "Grave"
-bindsym $mod+Grave workspace $wsGrave
-bindsym $mod+Shift+Grave move container to workspace $wsGrave
-
-set $ws1 "1"
-bindsym $mod+1 workspace number $ws1
-bindsym $mod+Shift+1 move container to workspace number $ws1
-
-set $ws2 "2"
-bindsym $mod+2 workspace number $ws2
-bindsym $mod+Shift+2 move container to workspace number $ws2
-
-set $ws3 "3"
-bindsym $mod+3 workspace number $ws3
-bindsym $mod+Shift+3 move container to workspace number $ws3
-
-# akil 
-
-# Reinicia o Sway
-bindsym $mod+Shift+r reload
-
-# abri launcher de menu
-bindsym $mod+d exec $menu
-
-# ativar terminal
-bindsym $mod+Return exec $$term
-
 # aquivo de opacity para o terminal
 # set $term alacritty--config-file /etc/alacritty/alacritty.toml
 
@@ -69,54 +32,6 @@ bindsym $mod+Return exec $$term
 #    }
 #}
 
-# iniciar a tualizasao
-# exec sudo xbps-install -Syu
-# exec sudo flatpak update
-# exec sudo zypper dup
-
-# Programas para iniciar no boot
-exec firefox 
-exec ~/.millennium/start.sh
-exec alacritty -e sudo lvim
-# exec  flatpak run com.unity.UnityHub
-# exec  gnome-boxes
-
-# atalhos para executar aplicativos voidlinux>dbus-launch
-bindsym {
-$mod+n exec firefox       
-$mod+g exec gnome-boxes
-$mod+s exec ~/.millennium/start.sh
-$mod+h exec flatpak run com.heroicgameslauncher.hgl
-$mod+b exec flatpak run org.upbge.UPBGE
-$mod+v exec steam steam://rungameid/438100
-$mod+u exec steam steam://rungameid/15077473836418990080
-$mod+m exec prismlauncher
-$mod+l exec alacritty -e sudo lvim
-}
-
-# pula musica
-bindsym {
-$mod+q exec playerctl pause
-$mod+r exec playerctl play
-$mod+a exec playerctl next
-$mod+z exec playerctl previous
-}
-
-# teclas para desligar ou reiniciar voidlinux zzz
-bindsym {
-$mod+p exec sudo systemctl suspend
-$mod+Shift+o exec sudo reboot
-# sair do i3 ou sway
-# bindsym $mod+Shift+e exec i3-msg exit
-$mod+Shift+i exec swaymsg exit
-}
-
-# Controle de volume
-bindsym {
-$mod+F1 exec pactl set-sink-volume @DEFAULT_SINK@ +5% 
-$mod+F3 exec pactl set-sink-volume @DEFAULT_SINK@ -5%
-}
-
 # Configuração do Mouse
 input type:pointer {
     accel_profile flat
@@ -131,20 +46,103 @@ input type:keyboard {
 seat * hide_cursor 10000              
 seat * hide_cursor when-typing enable
 
+# iniciar a tualizasao
+# exec sudo xbps-install -Syu
+# exec sudo flatpak update
+# exec sudo zypper dup
+
+# Programas para iniciar no boot
+exec firefox 
+exec ~/.millennium/start.sh
+exec alacritty -e sudo lvim
+# exec  flatpak run com.unity.UnityHub
+# exec  gnome-boxes
+
+# acho e para colocar 123 na bar
+set $wsGrave "Grave"
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+
+bindsym {
+# Fecha a janela
+$mod+w kill
+
+# para o modo tela cheia
+$mod+f fullscreen toggle 
+
+# Alterna os modos flutuante e tiling 
+$mod+Shift+space floating toggle
+
+# A1lterna áreas de trabalho
+$mod+Grave workspace $wsGrave
+$mod+Shift+Grave move container to workspace $wsGrave
+
+$mod+1 workspace number $ws1
+$mod+Shift+1 move container to workspace number $ws1
+
+$mod+2 workspace number $ws2
+$mod+Shift+2 move container to workspace number $ws2
+
+$mod+3 workspace number $ws3
+$mod+Shift+3 move container to workspace number $ws3
+
+# akil 
+
+# Reinicia o Sway
+$mod+Shift+r reload
+
+# abri launcher de menu
+$mod+d exec $menu
+
+# ativar terminal
+$mod+Return exec $$term
+
+# atalhos para executar aplicativos voidlinux>dbus-launch
+$mod+n exec firefox       
+$mod+g exec gnome-boxes
+$mod+s exec ~/.millennium/start.sh
+$mod+h exec flatpak run com.heroicgameslauncher.hgl
+$mod+b exec flatpak run org.upbge.UPBGE
+$mod+v exec steam steam://rungameid/438100
+$mod+u exec steam steam://rungameid/15077473836418990080
+$mod+m exec prismlauncher
+$mod+l exec alacritty -e sudo lvim
+
+
+# pula musica
+$mod+q exec playerctl pause
+$mod+r exec playerctl play
+$mod+a exec playerctl next
+$mod+z exec playerctl previous
+
+
+# teclas para desligar ou reiniciar voidlinux zzz
+$mod+p exec sudo systemctl suspend
+$mod+Shift+o exec sudo reboot
+# sair do i3 ou sway
+# bindsym $mod+Shift+e exec i3-msg exit
+$mod+Shift+i exec swaymsg exit
+
+
+# Controle de volume
+$mod+F1 exec pactl set-sink-volume @DEFAULT_SINK@ +5% 
+$mod+F3 exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+
 # Move a janela para o scratchpad
-bindsym $mod+minus move scratchpad
+$mod+minus move scratchpad
 
 # Mostra a janela do scratchpad (abnt2 apóstrofo)
-bindsym $mod+tab scratchpad show
+$mod+tab scratchpad show
 
 # Opacidade
-bindsym $mod+x exec swaymsg opacity 0.3  
-bindsym $mod+c exec swaymsg opacity 0.9  
+$mod+x exec swaymsg opacity 0.3  
+$mod+c exec swaymsg opacity 0.9  
 
 # movimentação
-# bindsym $mod+F1 move position center
-# bindsym $mod+y move position -200 -200
-# bindsym $mod+2 move position 100% 0
-# bindsym $mod+3 move position 0 100%
-# bindsym $mod+4 move position 100% 100%
-
+# $mod+F1 move position center
+# $mod+y move position -200 -200
+# $mod+2 move position 100% 0
+# $mod+3 move position 0 100%
+# $mod+4 move position 100% 100%
+}
