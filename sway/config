@@ -1,19 +1,22 @@
-# Define a tecla Mod4 (geralmente a tecla Super ou Windows) como $mod
+# arquivo de cofig
+include /etc/sway/config.d/*.conf
+
+# (geralmente a tecla Super ou Windows) como $mod
 set $mod Mod4
 
-# Define que o modificador para a janela flutuante é a tecla $mod (Super/Windows)
+# para a janela flutuante é a tecla $mod (Super/Windows)
 floating_modifier $mod
 
-# Fecha a janela ativa ao pressionar $mod+w
+# Fecha a janela
 bindsym $mod+w kill
 
-# Alterna a janela ativa para o modo tela cheia ao pressionar $mod+f
+# para o modo tela cheia
 bindsym $mod+f fullscreen toggle 
 
-# Alterna a janela ativa entre os modos flutuante e tiling ao pressionar $mod+Shift+space
+# Alterna os modos flutuante e tiling 
 bindsym $mod+Shift+space floating toggle
 
-# A1lterna para a área de trabalho (workspace) número $ws1 ao pressionar $mod+1
+# A1lterna áreas de trabalho
 set $wsGrave "Grave"
 bindsym $mod+Grave workspace $wsGrave
 bindsym $mod+Shift+Grave move container to workspace $wsGrave
@@ -30,28 +33,21 @@ set $ws3 "3"
 bindsym $mod+3 workspace number $ws3
 bindsym $mod+Shift+3 move container to workspace number $ws3
 
-# sair do i3 ou sway
-# bindsym $mod+Shift+e exec i3-msg exit
-bindsym $mod+Shift+i exec swaymsg exit
+# akil 
 
-# akil
-
-# Reinicia o gerenciador de janelas ao pressionar
+# Reinicia o Sway
 bindsym $mod+Shift+r reload
 
-# Start your launcher
+# abri launcher de menu
 bindsym $mod+d exec $menu
 
-# Start a terminal
+# ativar terminal
 bindsym $mod+Return exec $$term
 
-# Your preferred terminal emulator
-set $term alacritty 
-# --config-file /etc/alacritty/alacritty.toml
+# aquivo de opacity para o terminal
+# set $term alacritty--config-file /etc/alacritty/alacritty.toml
 
-include /etc/sway/config.d/*.conf
-# include ~/.config/sway/config.d/*
-
+# bar do sistema
 #bar {    # barra automaticamente
 #    mode hide
 #    # barra no topo
@@ -81,9 +77,7 @@ include /etc/sway/config.d/*.conf
 # Programas para iniciar no boot
 exec firefox 
 exec ~/.millennium/start.sh
-# exec alacritty -e sudo lvim
-
-# Executar o script de salvamento a cada hora
+exec alacritty -e sudo lvim
 # exec  flatpak run com.unity.UnityHub
 # exec  gnome-boxes
 
@@ -91,12 +85,9 @@ exec ~/.millennium/start.sh
 bindsym {
 $mod+n exec firefox       
 $mod+g exec gnome-boxes
-# Github shdwmtr
 $mod+s exec ~/.millennium/start.sh
-# -startup -console steam://open/games
 $mod+h exec flatpak run com.heroicgameslauncher.hgl
 $mod+b exec flatpak run org.upbge.UPBGE
-# $mod+x exec audacity # flatpak run org.audacityteam.Audacity
 $mod+v exec steam steam://rungameid/438100
 $mod+u exec steam steam://rungameid/15077473836418990080
 $mod+m exec prismlauncher
@@ -111,29 +102,20 @@ $mod+a exec playerctl next
 $mod+z exec playerctl previous
 }
 
-# mute ou ativo microfone
-# bindsym $mod+Tab exec pactl set-source-mute alsa_input.pci-0000_05_00.6.analog-stereo 1
-# bindsym $mod+F5 exec pactl set-source-mute alsa_input.pci-0000_05_00.6.analog-stereo 0
-
 # teclas para desligar ou reiniciar voidlinux zzz
 bindsym {
 $mod+p exec sudo systemctl suspend
 $mod+Shift+o exec sudo reboot
+# sair do i3 ou sway
+# bindsym $mod+Shift+e exec i3-msg exit
+$mod+Shift+i exec swaymsg exit
 }
 
 # Controle de volume
 bindsym {
-$mod+F1 exec pactl set-sink-volume @DEFAULT_SINK@ +3% 
-$mod+F3 exec pactl set-sink-volume @DEFAULT_SINK@ -3%
+$mod+F1 exec pactl set-sink-volume @DEFAULT_SINK@ +5% 
+$mod+F3 exec pactl set-sink-volume @DEFAULT_SINK@ -5%
 }
-
-# Atalhos para ajustar o volume do microfone
-# bindsym $mod+F2 exec pactl set-source-volume @DEFAULT_SOURCE@ +20% 
-# bindsym $mod+F4 exec pactl set-source-volume @DEFAULT_SOURCE@ -20% 
-
-# para botar em 8% o volume
-# exec pactl set-sink-volume 0 8%
-exec pactl set-source-volume alsa_input.pci-0000_05_00.6.analog-stereo 100%
 
 # Configuração do Mouse
 input type:pointer {
@@ -150,13 +132,13 @@ seat * hide_cursor 10000
 seat * hide_cursor when-typing enable
 
 # Move a janela para o scratchpad
-bindsym $mod+Shift+minus move scratchpad
+bindsym $mod+minus move scratchpad
 
 # Mostra a janela do scratchpad (abnt2 apóstrofo)
-# bindsym $mod+Grave scratchpad show
+bindsym $mod+tab scratchpad show
 
 # Opacidade
-bindsym $mod+x exec swaymsg opacity 0.4  
+bindsym $mod+x exec swaymsg opacity 0.3  
 bindsym $mod+c exec swaymsg opacity 0.9  
 
 # movimentação
