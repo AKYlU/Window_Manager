@@ -1,5 +1,8 @@
-# arquivo de cofig
+# arquivo de cofig e regra
 include /etc/sway/config.d/*.conf
+
+# wallpaper
+# output * bg /usr/share/wallpapers/default-1920x1080.png fill
 
 # (geralmente a tecla Super ou Windows) como $mod
 set $mod Mod4
@@ -10,27 +13,6 @@ floating_modifier $mod
 # aquivo de opacity para o terminal
 # set $term alacritty--config-file /etc/alacritty/alacritty.toml
 
-# bar do sistema
-#bar {    # barra automaticamente
-#    mode hide
-#    # barra no topo
-#    position top
-#    # obter informações blocks
-#    status_command i3blocks
-#    # fonte
-#    font pango:DejaVu Sans Mono 9
-#    
-#    
-#     colors {
-#     background #ff4d84
-#     statusline #ffffff
-#     separator #555555
-#     focused_workspace #803060 #803060 #ffffff
-#     active_workspace #333333 #333333 #ffffff
-#     inactive_workspace #ff4d84 #ff4d84 #ffffff
-#    urgent_workspace #2f343f #ffffff #2f343f
-#    }
-#}
 
 # Configuração do Mouse
 input type:pointer {
@@ -38,11 +20,11 @@ input type:pointer {
 }
 
 # Configuração do Teclado (layouts: us, us)
-input type:keyboard {
-    xkb_layout us,us
-}
+# input type:keyboard {
+#    xkb_layout us,us
+# }
 
-# Configuração do assento
+# Configuração da seta
 seat * hide_cursor 10000              
 seat * hide_cursor when-typing enable
 
@@ -53,8 +35,8 @@ seat * hide_cursor when-typing enable
 
 # Programas para iniciar no boot
 exec firefox 
-exec ~/.millennium/start.sh
-exec alacritty -e sudo lvim
+# exec ~/.millennium/start.sh
+# exec alacritty -e sudo lvim
 # exec  flatpak run com.unity.UnityHub
 # exec  gnome-boxes
 
@@ -96,14 +78,15 @@ $mod+Shift+r reload
 $mod+d exec $menu
 
 # ativar terminal
-$mod+Return exec $$term
+$mod+Return exec alacritty
 
 # atalhos para executar aplicativos voidlinux>dbus-launch
 $mod+n exec firefox       
 $mod+g exec gnome-boxes
-$mod+s exec ~/.millennium/start.sh
+# ~/.millennium/start.sh
+$mod+s exec dbus-launch flatpak run com.valvesoftware.Steam
 $mod+h exec flatpak run com.heroicgameslauncher.hgl
-$mod+b exec flatpak run org.upbge.UPBGE
+$mod+y exec alacritty
 $mod+v exec steam steam://rungameid/438100
 $mod+u exec steam steam://rungameid/15077473836418990080
 $mod+m exec prismlauncher
@@ -111,14 +94,14 @@ $mod+l exec alacritty -e sudo lvim
 
 
 # pula musica
-$mod+q exec playerctl pause
-$mod+r exec playerctl play
+$mod+q exec playerctl play-pause
 $mod+a exec playerctl next
 $mod+z exec playerctl previous
 
 
 # teclas para desligar ou reiniciar voidlinux zzz
-$mod+p exec sudo systemctl suspend
+systemctl suspend
+$mod+p exec sudo zzz
 $mod+Shift+o exec sudo reboot
 # sair do i3 ou sway
 # bindsym $mod+Shift+e exec i3-msg exit
@@ -136,7 +119,7 @@ $mod+minus move scratchpad
 $mod+tab scratchpad show
 
 # Opacidade
-$mod+x exec swaymsg opacity 0.3  
+$mod+x exec swaymsg opacity 0.7 
 $mod+c exec swaymsg opacity 0.9  
 
 # movimentação
