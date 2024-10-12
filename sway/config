@@ -90,17 +90,21 @@ $mod+y exec alacritty
 $mod+v exec steam steam://rungameid/438100
 $mod+u exec steam steam://rungameid/15077473836418990080
 $mod+m exec prismlauncher
+
+# wallpaper
+# output * bg /usr/share/wallpapers/default-1920x1080.png fill
+
 $mod+l exec alacritty -e sudo lvim
 
 
 # pula musica
 $mod+q exec playerctl play-pause
-$mod+a exec playerctl next
+# $mod+a exec playerctl next
 $mod+z exec playerctl previous
 
 
 # teclas para desligar ou reiniciar voidlinux zzz
-systemctl suspend
+# systemctl suspend
 $mod+p exec sudo zzz
 $mod+Shift+o exec sudo reboot
 # sair do i3 ou sway
