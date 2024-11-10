@@ -78,7 +78,8 @@ $mod+Shift+r reload
 $mod+d exec $menu
 
 # ativar terminal
-$mod+Return exec alacritty
+$mod+Return exec i3-sensible-terminal
+# $mod+Return exec alacritty
 
 # atalhos para executar aplicativos voidlinux>dbus-launch
 $mod+n exec firefox       
