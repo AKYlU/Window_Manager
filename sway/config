@@ -1,8 +1,10 @@
 # arquivo de cofig e regra
 include /etc/sway/config.d/*.conf
+include ~/.config/i3/config.d/*.conf
 
 # wallpaper
 # output * bg /usr/share/wallpapers/default-1920x1080.png fill
+focus_follows_mouse no
 
 # (geralmente a tecla Super ou Windows) como $mod
 set $mod Mod4
@@ -85,8 +87,9 @@ $mod+Return exec i3-sensible-terminal
 $mod+n exec firefox       
 $mod+g exec gnome-boxes
 # ~/.millennium/start.sh
-$mod+s exec dbus-launch flatpak run com.valvesoftware.Steam
-$mod+h exec flatpak run com.heroicgameslauncher.hgl
+$mod+s exec steam
+$mod+b exec blender-4.1
+# $mod+h exec 
 $mod+y exec alacritty
 $mod+v exec steam steam://rungameid/438100
 $mod+u exec steam steam://rungameid/15077473836418990080
@@ -116,6 +119,8 @@ $mod+Shift+i exec swaymsg exit
 # Controle de volume
 $mod+F1 exec pactl set-sink-volume @DEFAULT_SINK@ +5% 
 $mod+F3 exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
 
 # Move a janela para o scratchpad
 $mod+minus move scratchpad
