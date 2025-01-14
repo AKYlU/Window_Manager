@@ -1,0 +1,43 @@
+#!/bin/sh
+
+mod="Mod4"                        # Definindo a tecla Mod como Super/Windows
+
+riverctl map normal $mod W close  # Fechar a janela focada
+
+riverctl map-pointer normal $mod BTN_LEFT move-view    # Mover janela (botão esquerdo do mouse: 272)
+riverctl map-pointer normal $mod BTN_RIGHT resize-view # Redimensionar janela (botão direito do mouse: 273)
+
+# Abrir aplicativos
+riverctl map normal $mod Return spawn "kitty"                         # Abrir terminal
+riverctl map normal $mod B spawn "blender"                            # Abrir Blender
+riverctl map normal $mod S spawn "steam"                              # Abrir Steam
+riverctl map normal $mod M spawn "prismlauncher"                      # Abrir Prisms Launcher
+riverctl map normal $mod N spawn "firefox"                            # Abrir navegador Firefox
+riverctl map normal $mod U spawn "flatpak run com.unity.UnityHub"     # Abrir Unity Hub
+# riverctl map normal $mod F spawn "WINEPREFIX=/home/akil/.wine wine 'C:\\users\\akil\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Image-Line\\FL Studio 2024.lnk'" # Abrir FL Studio
+riverctl map normal $mod L spawn "kitty -e sudo env 'PATH=$PATH' lvim" # Abrir terminal com sudo lvim
+
+# Controle de mídia
+riverctl map normal $mod Q spawn "playerctl play-pause"               # Alternar entre play e pause
+riverctl map normal $mod A spawn "playerctl previous"                 # Reproduzir música anterior
+riverctl map normal $mod Z spawn "playerctl next"                     # Reproduzir próxima música
+
+# Controle de volume
+riverctl map normal None XF86AudioRaiseVolume spawn "pactl set-sink-volume @DEFAULT_SINK@ +10%" # Aumentar volume
+riverctl map normal None XF86AudioLowerVolume spawn "pactl set-sink-volume @DEFAULT_SINK@ -10%" # Diminuir volume
+
+# Atalhos para alternar entre os workspaces (tags)
+riverctl map normal $mod Grave spawn "riverctl set-focused-tags 1"        # Alternar para o workspace 1
+riverctl map normal $mod+Shift Grave spawn "riverctl set-tags focused 1"  # Mover para o workspace 1
+
+# Atalhos para alternar para workspaces específicos
+riverctl map normal $mod 1 spawn "riverctl set-focused-tags 2"        # Alterna para o workspace 2
+riverctl map normal $mod+Shift 1 spawn "riverctl set-tags focused 2"  # Move a janela para o workspace 2
+
+Section "InputClass"
+    Identifier "Mouse"
+    MatchDriver "libinput"
+    Option "AccelProfile" "flat"      # Desativa a aceleração
+    Option "AccelSpeed" "0"           # Define a aceleração para 0
+EndSection
+
