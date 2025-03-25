@@ -1,0 +1,1 @@
+sudo pacman -R cachyos-openbox-settings tint2
