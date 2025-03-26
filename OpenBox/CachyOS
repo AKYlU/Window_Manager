@@ -1,1 +1,3 @@
 sudo pacman -R cachyos-openbox-settings tint2
+
+dev-perl/Gtk3
