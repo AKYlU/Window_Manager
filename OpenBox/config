@@ -1,7 +1,0 @@
-openbox --restart
-
-sudo pacman -R cachyos-openbox-settings tint2
-
-dev-perl/Gtk3
-
-emerge --ask obmenu-generator
