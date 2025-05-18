@@ -81,7 +81,7 @@ $mod+d exec $menu
 
 # ativar terminal
 $mod+Return exec i3-sensible-terminal
-# $mod+Return exec alacritty
+# $mod+Return exec konsole && alacritty
 
 # atalhos para executar aplicativos voidlinux>dbus-launch
 $mod+n exec firefox       
