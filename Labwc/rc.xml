@@ -1,0 +1,214 @@
+<?xml version="1.0"?>
+<labwc_config>
+  <windowRules>
+    <windowRule identifier="steam_app_438100" matchOnce="false" workspace="2"/>
+  </windowRules>
+  <mouse>
+    <doubleClickTime>1</doubleClickTime>
+    <context name="Frame"><mousebind button="A-Left" action="Press"><action name="Focus"/><action name="Raise"/></mousebind><mousebind button="A-Left" action="Drag"><action name="Move"/></mousebind><mousebind button="A-Right" action="Press"><action name="Focus"/><action name="Raise"/></mousebind><mousebind button="A-Right" action="Drag"><action name="Resize"/></mousebind><mousebind button="A-Middle" action="Click"><action name="Iconify"/></mousebind>-
+    </context>
+  </mouse>
+  <snapping>
+    <range>0</range>
+  </snapping>
+  <resize>
+    <popupShow>Always</popupShow>
+  </resize>
+  <!-- edge strength is in pixels -->
+  <resistance>
+    <screenEdgeStrength>20</screenEdgeStrength>
+    <windowEdgeStrength>20</windowEdgeStrength>
+    <!-- resistance for maximized/tiled windows -->
+    <unSnapThreshold>20</unSnapThreshold>
+    <!-- resistance for vertically/horizontally maximized windows -->
+    <unMaximizeThreshold>150</unMaximizeThreshold>
+  </resistance>
+  <windowSwitcher show="yes" preview="no" outlines="yes" allWorkspaces="yes">
+    <fields>
+      <field content="state" width="5%"/>
+      <field content="icon" width="5%"/>
+      <field content="desktop_entry_name" width="30%"/>
+      <field content="title" width="60%"/>
+    </fields>
+  </windowSwitcher>
+  <theme>
+    <font place="OnScreenDisplay">
+      <name>sans</name>
+      <size>10</size>
+      <slant>normal</slant>
+      <weight>normal</weight>
+    </font>
+    <font place="ActiveWindow">
+      <name>sans</name>
+      <size>10</size>
+      <slant>normal</slant>
+      <weight>normal</weight>
+    </font>
+    <font place="InactiveWindow">
+      <name>sans</name>
+      <size>10</size>
+      <slant>normal</slant>
+      <weight>normal</weight>
+    </font>
+    <font place="MenuHeader">
+      <name>sans</name>
+      <size>10</size>
+      <slant>normal</slant>
+      <weight>normal</weight>
+    </font>
+    <font place="MenuItem">
+      <name>sans</name>
+      <size>10</size>
+      <slant>normal</slant>
+      <weight>normal</weight>
+    </font>
+    <font place="OnScreenDisplay">
+      <name>sans</name>
+      <size>10</size>
+      <slant>normal</slant>
+      <weight>normal</weight>
+    </font>
+    <cornerRadius>0</cornerRadius>
+    <name>Adwaita</name>
+  </theme>
+  <desktops number="2">
+    <popupTime>0</popupTime>
+    <names>
+      <name>Workspace 0</name>
+      <name>Workspace 1</name>
+    </names>
+  </desktops>
+  <outputs>
+    <output name="HDMI-A-1">
+      <scale>0.9</scale>
+    </output>
+  </outputs>
+  <core>
+    <decoration>server</decoration>
+  </core>
+  <windowRules>
+    <!-- Remove decoração (barra + borda) por padrão -->
+    <windowRule identifier="*" serverDecoration="no"/>
+  </windowRules>
+  <!-- foco por mouse + elevação automática -->
+  <focus>
+    <followMouse>yes</followMouse>
+    <raiseOnFocus>yes</raiseOnFocus>
+  </focus>
+  <keyboard>
+    <layoutScope>global</layoutScope>
+    <repeatRate>30</repeatRate>
+    <repeatDelay>200</repeatDelay>
+    <keybind key="A-tab">
+      <action name="NextWindow"/>
+    </keybind>
+    <keybind key="XF86_AudioLowerVolume">
+      <action name="Execute" command="amixer sset Master 5%-"/>
+    </keybind>
+    <keybind key="XF86_AudioRaiseVolume">
+      <action name="Execute" command="amixer sset Master 5%+"/>
+    </keybind>
+    <keybind key="A-]">
+      <action name="Execute" command="systemctl poweroff"/>
+    </keybind>
+    <keybind key="A-S-2">
+      <action name="SendToDesktop">
+        <to>2</to>
+        <!-- identifica a segunda área (começa em 1) -->
+        <follow>yes</follow>
+        <!-- foca automaticamente a nova área -->
+      </action>
+    </keybind>
+    <keybind key="A-S-1">
+      <action name="SendToDesktop">
+        <to>1</to>
+        <!-- identifica a segunda área (começa em 1) -->
+        <follow>yes</follow>
+        <!-- foca automaticamente a nova área -->
+      </action>
+    </keybind>
+    <keybind key="A-Escape">
+      <action name="GoToDesktop" to="last"/>
+    </keybind>
+    <!-- Lançar apps com Alt+ -->
+    <keybind key="A-1">
+      <action name="Execute" command="kooha"/>
+    </keybind>
+    <keybind key="A-delete">
+      <action name="Execute" command="hyprshot -m region --clipboard-only --freeze"/>
+    </keybind>
+    <keybind key="A-n">
+      <action name="Execute" command="librewolf"/>
+    </keybind>
+    <keybind key="A-s">
+      <action name="Execute" command="steam"/>
+    </keybind>
+    <keybind key="A-j">
+      <action name="Execute" command="pcmanfm-qt"/>
+    </keybind>
+    <keybind key="A-r">
+      <action name="Execute" command="krita"/>
+    </keybind>
+    <keybind key="A-d">
+      <action name="Execute" command="blender"/>
+    </keybind>
+    <keybind key="A-x">
+      <action name="Execute" command="unityhub"/>
+    </keybind>
+    <keybind key="A-g">
+      <action name="Execute" command="reaper"/>
+    </keybind>
+    <keybind key="A-b">
+      <action name="Execute" command="virt-viewer"/>
+    </keybind>
+    <!-- Tocar/pausar -->
+    <keybind key="A-q">
+      <action name="Execute" command="playerctl play-pause"/>
+    </keybind>
+    <!-- Pausar (exemplo alternativo com A-e) -->
+    <keybind key="A-e">
+      <action name="Execute" command="playerctl pause"/>
+    </keybind>
+    <!-- Música anterior -->
+    <keybind key="A-z">
+      <action name="Execute" command="playerctl previous"/>
+    </keybind>
+    <!-- Próxima música (Alt+a) -->
+    <keybind key="A-a">
+      <action name="Execute" command="playerctl next"/>
+    </keybind>
+    <!-- Alt+Enter para lançar o Konsole -->
+    <keybind key="A-Return">
+      <action name="Execute" command="konsole"/>
+    </keybind>
+    <!-- Alt+W: fecha a janela ativa -->
+    <keybind key="A-w">
+      <action name="Close"/>
+    </keybind>
+    <!-- Alt+C: inicia o modo “mover” -->
+    <keybind key="A-c">
+      <action name="Move"/>
+    </keybind>
+    <!-- Alt+F: maximiza/restaura -->
+    <keybind key="A-f">
+      <action name="ToggleMaximize" direction="both"/>
+    </keybind>
+    <!-- Alt+V: inicia o modo “redimensionar” -->
+    <keybind key="A-v">
+      <action name="Resize"/>
+    </keybind>
+    <!-- Alt+T: alterna 'sempre em cima' -->
+    <keybind key="A-t">
+      <action name="ToggleAlwaysOnTop"/>
+    </keybind>
+    <!-- Alt+Y: rebaixa (lower) a janela ativa -->
+    <keybind key="A-y">
+      <action name="Lower"/>
+    </keybind>
+  </keyboard>
+  <libinput>
+    <device>
+      <naturalScroll/>
+    </device>
+  </libinput>
+</labwc_config>

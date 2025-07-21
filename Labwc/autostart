@@ -1,0 +1,10 @@
+#!/usr/bin/env sh
+
+wlr-randr --output HDMI-A-1 --scale 0.9 &
+
+# Inicializa o wlsunset com os parâmetros especificados
+wlsunset -T 2501 -t 2500 -S 00:01 -s 00:02 &
+
+mpvpaper -vs -o "no-audio loop" HDMI-A-1 /home/akil/Downloads/frieren-starry-night-flower-field-moewalls-com.mp4 &
+
+librewolf
